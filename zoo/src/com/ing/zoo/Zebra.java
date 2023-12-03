@@ -1,33 +1,59 @@
 package com.ing.zoo;
 
-import java.util.Random;
+import static com.ing.zoo.EatingType.HERBIVORE;
 
-public class Zebra {
-    private String name;
-    private String helloText;
-    private String eatText;
+/** Zebra representation:
+ * This class implements all basic methods of the animal class
+ */
+public class Zebra extends Animal{
+    private final String name;
+    private final String helloText;
+    private final String eatText;
+    private final EatingType eatingType;
 
-    private String trick;
-
-    private String eatsFoodType;
-
-    public Zebra()
-    {
+    /**
+     * Zebra constructor adds a name helloText eatText and eatingType to the Zebra object
+     * @param name The name given to the Zebra
+     */
+    public Zebra(String name) {
+        this.name = name;
+        this.helloText = "zebra zebra";
+        this.eatText = "munch munch zank yee bra";
+        this.eatingType = HERBIVORE;
     }
 
-    public void sayHello()
-    {
-        helloText = "zebra zebra";
+    @Override
+    public void sayHello() {
         System.out.println(helloText);
     }
 
-    public void eatLeaves()
-    {
-        eatText = "munch munch zank yee bra";
+    @Override
+    public void eatLeaves() {
         System.out.println(eatText);
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public void eatMeat() {
+        System.out.println("This animal doesn't eat meat");
+    }
+
+    @Override
+    public void performTrick() {
+        System.out.println("This Zebra can't even count it's stripes");
+    }
+
+    @Override
+    public boolean knowsTrick() {
+        return false;
+    }
+
+    @Override
+    public EatingType getEatingType() {
+        return eatingType;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -2,42 +2,49 @@ package com.ing.zoo;
 
 import java.util.Random;
 
-public class Pig {
-    private String name;
-    private String helloText;
+import static com.ing.zoo.EatingType.OMNIVORE;
+
+/** Pig representation:
+ * This class implements all basic methods of the animal class
+ */
+
+public class Pig extends Animal{
+    private final String name;
+    private final String helloText;
     private String eatText;
-    private String trick;
+    private final EatingType eatingType;
 
-    private String eatsFoodType;
-
-    public Pig()
-    {
+    /**
+     * Pig constructor adds a name helloText eatText and eatingType to the Pig object
+     * @param name The name given to the Pig
+     */
+    public Pig(String name) {
+        this.name = name;
+        this.helloText = "oink oink";
+        this.eatText = "you have to choose how to feed me";
+        this.eatingType = OMNIVORE;
     }
 
-    public void sayHello()
-    {
-        helloText = "splash";
+    @Override
+    public void sayHello() {
         System.out.println(helloText);
     }
 
-    public void eatLeaves()
-    {
+    @Override
+    public void eatLeaves() {
         eatText = "munch munch oink";
         System.out.println(eatText);
     }
 
-    public void eatMeat()
-    {
+    @Override
+    public void eatMeat() {
         eatText = "nomnomnom oink thx";
         System.out.println(eatText);
     }
 
-    public void setName(String name){
-        this.name = name;
-    }
-
-    public void performTrick()
-    {
+    @Override
+    public void performTrick() {
+        String trick;
         Random random = new Random();
         int rnd = random.nextInt(2);
         if(rnd == 0)
@@ -49,5 +56,20 @@ public class Pig {
             trick = "runs in circles";
         }
         System.out.println(trick);
+    }
+
+    @Override
+    public boolean knowsTrick() {
+        return true;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public EatingType getEatingType() {
+        return eatingType;
     }
 }

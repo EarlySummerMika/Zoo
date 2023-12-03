@@ -2,36 +2,43 @@ package com.ing.zoo;
 
 import java.util.Random;
 
-public class Tiger {
-    private String name;
-    private String helloText;
-    private String eatText;
-    private String trick;
+import static com.ing.zoo.EatingType.CARNIVORE;
 
-    private String eatsFoodType;
+/** Tiger representation:
+ * This class implements all basic methods of the animal class
+ */
+public class Tiger extends Animal{
+    private final String name;
+    private final String helloText;
+    private final String eatText;
+    private final EatingType eatingType;
 
-    public Tiger()
-    {
+    /**
+     * Tiger constructor adds a name helloText eatText and eatingType to the Tiger object
+     * @param name The name given to the Tiger
+     */
+    public Tiger(String name) {
+        this.name = name;
+        this.helloText = "rraaarww";
+        this.eatText = "nomnomnom oink wubalubadubdub";
+        this.eatingType = CARNIVORE;
     }
 
-    public void sayHello()
-    {
-        helloText = "rraaarww";
+    public void sayHello() {
         System.out.println(helloText);
     }
 
-    public void eatMeat()
-    {
-        eatText = "nomnomnom oink wubalubadubdub";
+    @Override
+    public void eatLeaves() {
+        System.out.println("This animal doesn't eat leaves");
+    }
+
+    public void eatMeat() {
         System.out.println(eatText);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void performTrick()
-    {
+    public void performTrick() {
+        String trick;
         Random random = new Random();
         int rnd = random.nextInt(2);
         if(rnd == 0)
@@ -43,5 +50,19 @@ public class Tiger {
             trick = "scratches ears";
         }
         System.out.println(trick);
+    }
+
+    @Override
+    public boolean knowsTrick() {
+        return true;
+    }
+
+    @Override
+    public EatingType getEatingType() {
+        return eatingType;
+    }
+
+    public String getName() {
+        return name;
     }
 }

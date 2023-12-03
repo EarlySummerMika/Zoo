@@ -1,30 +1,57 @@
 package com.ing.zoo;
 
-public class Lion {
-    private String name;
-    private String helloText;
-    private String eatText;
+import static com.ing.zoo.EatingType.CARNIVORE;
 
-    private String eatsFoodType;
+/** Lion representation:
+ * This class implements all basic methods of the animal class
+ */
+public class Lion extends Animal{
+    private final String name;
+    private final String helloText;
+    private final String eatText;
+    private final EatingType eatingType;
 
-    public Lion()
-    {
+    /**
+     * Lion constructor adds a name helloText eatText and eatingType to the Lion object
+     * @param name The name given to the Lion
+     */
+    public Lion(String name) {
+        this.name = name;
+        this.helloText = "roooaoaaaaar";
+        this.eatText = "nomnomnom thx mate";
+        this.eatingType = CARNIVORE;
     }
 
-    public void sayHello()
-    {
-        helloText = "roooaoaaaaar";
+    @Override
+    public void sayHello() {
         System.out.println(helloText);
     }
 
-    public void eatMeat()
-    {
-        eatText = "nomnomnom thx mate";
+    @Override
+    public void eatMeat() {
         System.out.println(eatText);
     }
 
-    public void setName(String name){
-        this.name = name;
+    @Override
+    public void eatLeaves() {System.out.println("This animal doesn't eat leaves");}
+
+    @Override
+    public String getName() {
+        return name;
     }
 
+    @Override
+    public void performTrick(){
+        System.out.println("This animal doesn't perform a trick");
+    }
+
+    @Override
+    public boolean knowsTrick() {
+        return false;
+    }
+
+    @Override
+    public EatingType getEatingType() {
+        return eatingType;
+    }
 }
